@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  Reconstructed from LoginController.java's @FXML fields/methods, not edited
+  from your original file (not present in project knowledge). Every fx:id
+  and onAction below matches the controller exactly; the layout is a
+  reasonable reconstruction using BloodLink's existing theme.css classes.
+-->
+<StackPane xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.bloodlink.controller.LoginController"
+           styleClass="app-background"
+           stylesheets="@../css/theme.css"
+           prefWidth="1000" prefHeight="700">
+
+    <VBox spacing="22" styleClass="content-card" maxWidth="420" maxHeight="-Infinity" alignment="CENTER">
+        <padding><Insets top="36" right="36" bottom="36" left="36"/></padding>
+
+        <VBox spacing="4" alignment="CENTER">
+            <SVGPath content="M14,0 C14,0 4.2,12.6 4.2,18.2 A9.8,9.8 0 0 0 23.8,18.2 C23.8,12.6 14,0 14,0 Z" styleClass="brand-icon" scaleX="1.36" scaleY="1.36"/>
+            <Label text="BloodLink" styleClass="header-brand"/>
+            <Label text="Sign in to continue" styleClass="helper-text"/>
+        </VBox>
+
+        <VBox spacing="6">
+            <Label text="I AM A" styleClass="field-label"/>
+            <ComboBox fx:id="roleCombo" maxWidth="Infinity"/>
+        </VBox>
+
+        <VBox spacing="6">
+            <Label text="EMAIL" styleClass="field-label"/>
+            <TextField fx:id="emailField" promptText="you@example.com"/>
+        </VBox>
+
+        <VBox spacing="6">
+            <Label text="PASSWORD" styleClass="field-label"/>
+            <PasswordField fx:id="passwordField" promptText="Password"/>
+        </VBox>
+
+        <Label fx:id="errorLabel" styleClass="error-text" wrapText="true"/>
+
+        <Button fx:id="signInButton" text="Sign In" styleClass="button-primary" maxWidth="Infinity" onAction="#signIn"/>
+
+        <HBox spacing="6" alignment="CENTER">
+            <Label text="New to BloodLink?" styleClass="helper-text"/>
+            <Button text="Create an account" styleClass="button-ghost" onAction="#openRegistration"/>
+        </HBox>
+    </VBox>
+</StackPane>

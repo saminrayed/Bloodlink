@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<!--
+  Reconstructed from DonorDashboardController.java's @FXML fields/methods,
+  not edited from your original file (not present in project knowledge).
+  Every fx:id and onAction below matches the controller exactly; the visual
+  layout is a reasonable reconstruction using BloodLink's existing theme.css
+  classes, not a guaranteed match to your current arrangement. Diff before
+  replacing if you want to preserve any layout customization you've already made.
+
+  Note: availabilityCombo intentionally has NO onAction here -- the controller
+  wires it programmatically in initialize() via setOnAction(...). Adding one
+  in FXML too would double-fire the handler.
+-->
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.bloodlink.controller.DonorDashboardController"
+            styleClass="app-background"
+            stylesheets="@../css/theme.css"
+            prefWidth="1220" prefHeight="800">
+
+    <top>
+        <HBox styleClass="topbar" spacing="14" alignment="CENTER_LEFT">
+            <padding><Insets top="14" right="22" bottom="14" left="22"/></padding>
+            <SVGPath content="M14,0 C14,0 4.2,12.6 4.2,18.2 A9.8,9.8 0 0 0 23.8,18.2 C23.8,12.6 14,0 14,0 Z" styleClass="brand-icon"/>
+            <Label text="BloodLink" styleClass="header-brand"/>
+            <Label text="Donor Workspace" styleClass="topbar-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="welcomeLabel" styleClass="topbar-title" text="Welcome"/>
+            <Label fx:id="unreadLabel" text="0" styleClass="notification-count"/>
+            <Button text="Log out" styleClass="button-ghost" onAction="#logout"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane styleClass="workspace-tabs" tabClosingPolicy="UNAVAILABLE">
+
+            <Tab text="Overview">
+                <ScrollPane fitToWidth="true" styleClass="transparent-scroll">
+                    <VBox spacing="18">
+                        <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+
+                        <HBox spacing="16">
+                            <VBox styleClass="stat-card" spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                                <Label text="BLOOD GROUP" styleClass="stat-label"/>
+                                <Label fx:id="bloodGroupLabel" styleClass="stat-value-accent" text="—"/>
+                            </VBox>
+                            <VBox styleClass="stat-card" spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                                <Label text="DONOR STATUS" styleClass="stat-label"/>
+                                <Label fx:id="badgeLabel" styleClass="stat-value" text="—"/>
+                            </VBox>
+                            <VBox styleClass="stat-card" spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                                <Label text="ELIGIBILITY" styleClass="stat-label"/>
+                                <Label fx:id="eligibilityLabel" styleClass="stat-value" text="—"/>
+                            </VBox>
+                        </HBox>
+
+                        <VBox spacing="10" styleClass="content-card">
+                            <Label text="Cooldown progress" styleClass="section-title"/>
+                            <Label fx:id="cooldownLabel" styleClass="helper-text" text="—" wrapText="true"/>
+                            <ProgressBar fx:id="cooldownProgress" maxWidth="Infinity" prefHeight="14"/>
+                        </VBox>
+
+                        <VBox spacing="10" styleClass="content-card">
+                            <Label text="Availability" styleClass="section-title"/>
+                            <Label text="Controls whether you appear in donor matching." styleClass="helper-text"/>
+                            <ComboBox fx:id="availabilityCombo" maxWidth="260" promptText="Set your availability"/>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="My Impact">
+                <ScrollPane fitToWidth="true" styleClass="transparent-scroll">
+                    <VBox spacing="18">
+                        <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+                        <Label text="Every figure here is a real, verified count from your own donation history -- not an estimate." styleClass="helper-text" wrapText="true"/>
+                        <HBox spacing="16">
+                            <VBox styleClass="stat-card" spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                                <Label text="VERIFIED DONATIONS" styleClass="stat-label"/>
+                                <Label fx:id="impactDonationsLabel" styleClass="stat-value-accent" text="—"/>
+                            </VBox>
+                            <VBox styleClass="stat-card" spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                                <Label text="TOTAL UNITS DONATED" styleClass="stat-label"/>
+                                <Label fx:id="impactUnitsLabel" styleClass="stat-value" text="—"/>
+                            </VBox>
+                            <VBox styleClass="stat-card" spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                                <Label text="HOSPITALS HELPED" styleClass="stat-label"/>
+                                <Label fx:id="impactHospitalsLabel" styleClass="stat-value" text="—"/>
+                            </VBox>
+                            <VBox styleClass="stat-card" spacing="8" HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                                <Label text="YOUR RATING" styleClass="stat-label"/>
+                                <Label fx:id="impactRatingLabel" styleClass="stat-value-accent" text="—"/>
+                            </VBox>
+                        </HBox>
+                        <VBox spacing="6" styleClass="content-card">
+                            <Label fx:id="impactSinceLabel" styleClass="section-title" text="—"/>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+            <Tab text="Nearby Hospitals">
+                <VBox spacing="14">
+                    <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+                    <Label text="Where you could donate" styleClass="section-title"/>
+                    <Label text="Every hospital in BloodLink's directory, sorted by distance from your registered location. This is separate from your active matches -- browse here anytime, whether or not you have a pending request." styleClass="helper-text" wrapText="true"/>
+                    <TableView fx:id="nearbyHospitalTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="nearbyHospitalNameColumn" text="Hospital" prefWidth="240"/>
+                            <TableColumn fx:id="nearbyHospitalDistrictColumn" text="District" prefWidth="120"/>
+                            <TableColumn fx:id="nearbyHospitalAreaColumn" text="Area" prefWidth="150"/>
+                            <TableColumn fx:id="nearbyHospitalPhoneColumn" text="Phone" prefWidth="130"/>
+                            <TableColumn fx:id="nearbyHospitalDistanceColumn" text="Distance" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <Tab text="Matched Requests">
+                <VBox spacing="14">
+                    <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Requests waiting for your response" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Refresh" styleClass="button-ghost" onAction="#refreshAll"/>
+                        <Button text="Decline" styleClass="button-danger-outline" onAction="#declineSelected"/>
+                        <Button text="Accept" styleClass="button-secondary" onAction="#acceptSelected"/>
+                        <Button text="Confirm Donated" styleClass="button-primary" onAction="#confirmDonated"/>
+                    </HBox>
+                    <TableView fx:id="matchTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="requestIdColumn" text="ID" prefWidth="50"/>
+                            <TableColumn fx:id="matchBloodColumn" text="Group" prefWidth="70"/>
+                            <TableColumn fx:id="hospitalColumn" text="Hospital" prefWidth="200"/>
+                            <TableColumn fx:id="matchDistrictColumn" text="District" prefWidth="100"/>
+                            <TableColumn fx:id="urgencyColumn" text="Urgency" prefWidth="90"/>
+                            <TableColumn fx:id="deadlineColumn" text="Deadline" prefWidth="100"/>
+                            <TableColumn fx:id="requestStatusColumn" text="Request" prefWidth="100"/>
+                            <TableColumn fx:id="matchStatusColumn" text="Your Response" prefWidth="120"/>
+                            <TableColumn fx:id="scoreColumn" text="Score" prefWidth="70"/>
+                            <TableColumn fx:id="distanceColumn" text="Distance" prefWidth="90"/>
+                            <TableColumn fx:id="requesterRatingColumn" text="Requester Rating" prefWidth="120"/>
+                            <TableColumn fx:id="progressColumn" text="Progress" prefWidth="100"/>
+                            <TableColumn fx:id="handshakeColumn" text="Handshake" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <Tab text="Donation History">
+                <VBox spacing="14">
+                    <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Your verified donations" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Rate Requester" styleClass="button-secondary" onAction="#rateRequester"/>
+                    </HBox>
+                    <TableView fx:id="donationTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="donationDateColumn" text="Date" prefWidth="110"/>
+                            <TableColumn fx:id="donationHospitalColumn" text="Hospital" prefWidth="220"/>
+                            <TableColumn fx:id="donationBloodColumn" text="Group" prefWidth="70"/>
+                            <TableColumn fx:id="donationUnitsColumn" text="Units" prefWidth="60"/>
+                            <TableColumn fx:id="donationVerifiedColumn" text="Status" prefWidth="100"/>
+                            <TableColumn fx:id="donationReviewColumn" text="Review" prefWidth="110"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+
+            <Tab text="Notifications">
+                <VBox spacing="14">
+                    <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Notifications" styleClass="section-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Button text="Mark all read" styleClass="button-secondary" onAction="#markAllNotificationsRead"/>
+                    </HBox>
+                    <ListView fx:id="notificationList" styleClass="notification-list" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </Tab>
+
+            <Tab text="Profile">
+                <ScrollPane fitToWidth="true" styleClass="transparent-scroll">
+                    <VBox spacing="20">
+                        <padding><Insets top="20" right="24" bottom="24" left="24"/></padding>
+
+                        <VBox spacing="14" styleClass="content-card">
+                            <Label text="Your details" styleClass="section-title"/>
+                            <HBox spacing="16" alignment="CENTER_LEFT">
+                                <StackPane>
+                                    <ImageView fx:id="profilePhotoView" fitWidth="84" fitHeight="84" preserveRatio="false" styleClass="avatar-photo" visible="false" managed="false"/>
+                                    <Label fx:id="profileInitialsLabel" styleClass="avatar-initials" text="?"/>
+                                </StackPane>
+                                <VBox spacing="8">
+                                    <Label text="Photo is optional and never required to use BloodLink." styleClass="helper-text" wrapText="true"/>
+                                    <HBox spacing="10">
+                                        <Button fx:id="uploadPhotoButton" text="Upload Photo" styleClass="button-secondary" onAction="#uploadPhoto"/>
+                                        <Button fx:id="removePhotoButton" text="Remove" styleClass="button-ghost" onAction="#removePhoto"/>
+                                    </HBox>
+                                </VBox>
+                            </HBox>
+                            <GridPane hgap="16" vgap="14">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="50"/>
+                                    <ColumnConstraints percentWidth="50"/>
+                                </columnConstraints>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                                    <Label text="FULL NAME" styleClass="field-label"/>
+                                    <TextField fx:id="nameField"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                    <Label text="PHONE" styleClass="field-label"/>
+                                    <TextField fx:id="phoneField"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="1" GridPane.columnIndex="0">
+                                    <Label text="DISTRICT" styleClass="field-label"/>
+                                    <TextField fx:id="districtField"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                                    <Label text="ADDRESS" styleClass="field-label"/>
+                                    <TextArea fx:id="addressArea" prefRowCount="2" wrapText="true"/>
+                                </VBox>
+                            </GridPane>
+                            <HBox spacing="12" alignment="CENTER_LEFT">
+                                <Button text="Save Profile" styleClass="button-primary" onAction="#saveProfile"/>
+                            </HBox>
+                        </VBox>
+
+                        <VBox spacing="14" styleClass="content-card">
+                            <Label text="Health details" styleClass="section-title"/>
+                            <GridPane hgap="16" vgap="14">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="50"/>
+                                    <ColumnConstraints percentWidth="50"/>
+                                </columnConstraints>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                                    <Label text="WEIGHT (KG)" styleClass="field-label"/>
+                                    <TextField fx:id="weightField"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                    <Label text="LAST DONATION DATE" styleClass="field-label"/>
+                                    <DatePicker fx:id="lastDonationPicker" maxWidth="Infinity"/>
+                                </VBox>
+                            </GridPane>
+                            <HBox spacing="12" alignment="CENTER_LEFT">
+                                <Button text="Save Health Info" styleClass="button-primary" onAction="#saveHealth"/>
+                            </HBox>
+                        </VBox>
+
+                        <VBox spacing="10" styleClass="content-card">
+                            <Label text="Reference hospital for distance" styleClass="section-title"/>
+                            <Label text="Optional: pick the hospital closest to where you actually are. Requesters will then see a precise distance to you instead of a district-level estimate." styleClass="helper-text" wrapText="true"/>
+                            <ComboBox fx:id="referenceHospitalCombo" editable="true" maxWidth="Infinity" promptText="Search hospital name..."/>
+                            <Label fx:id="referenceHospitalHelperLabel" styleClass="helper-text" wrapText="true"/>
+                            <HBox spacing="12" alignment="CENTER_LEFT">
+                                <Button text="Save Reference Hospital" styleClass="button-primary" onAction="#saveReferenceHospital"/>
+                                <Button text="Clear" styleClass="button-ghost" onAction="#clearReferenceHospital"/>
+                            </HBox>
+                        </VBox>
+
+                        <VBox spacing="14" styleClass="content-card">
+                            <Label text="Change password" styleClass="section-title"/>
+                            <GridPane hgap="16" vgap="14">
+                                <columnConstraints>
+                                    <ColumnConstraints percentWidth="33.3"/>
+                                    <ColumnConstraints percentWidth="33.3"/>
+                                    <ColumnConstraints percentWidth="33.3"/>
+                                </columnConstraints>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                                    <Label text="CURRENT PASSWORD" styleClass="field-label"/>
+                                    <PasswordField fx:id="oldPasswordField"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                    <Label text="NEW PASSWORD" styleClass="field-label"/>
+                                    <PasswordField fx:id="newPasswordField"/>
+                                </VBox>
+                                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="2">
+                                    <Label text="CONFIRM NEW PASSWORD" styleClass="field-label"/>
+                                    <PasswordField fx:id="confirmPasswordField"/>
+                                </VBox>
+                            </GridPane>
+                            <HBox spacing="12" alignment="CENTER_LEFT">
+                                <Button text="Change Password" styleClass="button-secondary" onAction="#changePassword"/>
+                                <Label fx:id="profileMessageLabel" styleClass="message-text" wrapText="true"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+            </Tab>
+
+        </TabPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,171 @@
+/* BloodLink design system: deep teal for trust, rose-red for emergency actions, warm neutral surfaces. */
+.root {
+    -fx-font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    -fx-font-size: 13px;
+    -fx-text-fill: #17343a;
+    -fx-accent: #176b6a;
+    -fx-focus-color: #4f9f9a;
+    -fx-faint-focus-color: rgba(79,159,154,0.18);
+}
+.app-background { -fx-background-color: #f4f7f6; }
+.auth-background { -fx-background-color: linear-gradient(to bottom right, #e8f2ef, #f9f4f1); -fx-padding: 32; }
+.auth-card { -fx-background-color: white; -fx-background-radius: 24; -fx-effect: dropshadow(gaussian, rgba(25,48,52,0.18), 30, 0.15, 0, 10); }
+.brand-panel { -fx-background-color: linear-gradient(to bottom right, #0e5558, #123f46); -fx-background-radius: 24 0 0 24; -fx-padding: 46; }
+.brand-mark { -fx-font-size: 48px; -fx-text-fill: #f6c8c5; }
+.brand-title { -fx-font-size: 36px; -fx-font-weight: 800; -fx-text-fill: white; }
+.brand-tagline { -fx-font-size: 16px; -fx-text-fill: #c9e4df; }
+.brand-copy { -fx-font-size: 14px; -fx-line-spacing: 5px; -fx-text-fill: #e7f4f1; }
+.auth-form-panel { -fx-padding: 48; }
+.simple-header, .topbar { -fx-background-color: white; -fx-padding: 14 22; -fx-border-color: transparent transparent #dfe8e6 transparent; -fx-border-width: 0 0 1 0; }
+.topbar-mark { -fx-font-size: 25px; -fx-text-fill: #a63b45; }
+.header-brand { -fx-font-size: 20px; -fx-font-weight: 800; -fx-text-fill: #164e54; }
+.topbar-title { -fx-font-size: 15px; -fx-font-weight: 600; -fx-text-fill: #35575c; }
+.page-title { -fx-font-size: 25px; -fx-font-weight: 800; -fx-text-fill: #143e44; }
+.section-title { -fx-font-size: 17px; -fx-font-weight: 700; -fx-text-fill: #173f45; }
+.field-label, .stat-label { -fx-font-size: 11px; -fx-font-weight: 700; -fx-text-fill: #587176; }
+.muted-text { -fx-text-fill: #6f8387; }
+.helper-text { -fx-text-fill: #75898c; -fx-font-size: 11px; }
+.error-text { -fx-text-fill: #a32938; -fx-font-weight: 600; }
+.message-text { -fx-text-fill: #176b6a; -fx-font-weight: 600; }
+.content-card, .stat-card { -fx-background-color: white; -fx-background-radius: 16; -fx-padding: 18; -fx-border-color: #e1e9e7; -fx-border-radius: 16; -fx-effect: dropshadow(gaussian, rgba(20,62,68,0.06), 10, 0.12, 0, 3); }
+.stat-card { -fx-min-height: 105px; }
+.stat-value, .stat-value-accent { -fx-font-size: 26px; -fx-font-weight: 800; -fx-text-fill: #164e54; }
+.stat-value-accent { -fx-text-fill: #a63b45; }
+.subtle-panel { -fx-background-color: #f3f8f7; -fx-background-radius: 14; -fx-padding: 16; -fx-border-color: #dce9e6; -fx-border-radius: 14; }
+.pill-light, .pill-teal, .notification-count { -fx-background-radius: 999; -fx-padding: 5 10; -fx-font-size: 11px; -fx-font-weight: 700; }
+.pill-light { -fx-background-color: rgba(255,255,255,0.16); -fx-text-fill: white; }
+.pill-teal { -fx-background-color: #dff0ec; -fx-text-fill: #176b6a; }
+.notification-count { -fx-background-color: #a63b45; -fx-text-fill: white; -fx-min-width: 28; -fx-alignment: center; }
+.status-success { -fx-text-fill: #1e7a57; }
+.status-warning { -fx-text-fill: #b46b16; }
+.text-field, .password-field, .text-area, .combo-box, .date-picker, .spinner {
+    -fx-background-color: #fbfcfc;
+    -fx-border-color: #cfdcda;
+    -fx-border-radius: 9;
+    -fx-background-radius: 9;
+    -fx-min-height: 40;
+}
+.text-field:focused, .password-field:focused, .text-area:focused, .combo-box:focused, .date-picker:focused, .spinner:focused { -fx-border-color: #3b8f8b; -fx-border-width: 1.5; -fx-background-color: white; }
+.text-area .content { -fx-background-color: transparent; }
+.button { -fx-cursor: hand; -fx-background-radius: 9; -fx-padding: 10 16; -fx-font-weight: 700; }
+.button-primary { -fx-background-color: #176b6a; -fx-text-fill: white; }
+.button-primary:hover { -fx-background-color: #105a5a; }
+.button-primary:pressed { -fx-background-color: #0b4749; }
+.button-secondary { -fx-background-color: #e8f1ef; -fx-text-fill: #175b5c; }
+.button-secondary:hover { -fx-background-color: #d7e7e3; }
+.button-ghost { -fx-background-color: transparent; -fx-text-fill: #48686d; -fx-border-color: #cbd9d7; -fx-border-radius: 9; }
+.button-ghost:hover { -fx-background-color: #f0f5f4; }
+.button-danger { -fx-background-color: #a63b45; -fx-text-fill: white; }
+.button-danger:hover { -fx-background-color: #8d2f3a; }
+.button-danger-outline { -fx-background-color: transparent; -fx-text-fill: #a63b45; -fx-border-color: #d7a4aa; -fx-border-radius: 9; }
+.button:disabled { -fx-opacity: 0.55; -fx-cursor: default; }
+.hyperlink { -fx-text-fill: #176b6a; -fx-font-weight: 700; -fx-border-color: transparent; }
+.workspace-tabs .tab-header-area { -fx-padding: 6 18 0 18; }
+.workspace-tabs .tab-header-background { -fx-background-color: white; -fx-border-color: transparent transparent #dfe8e6 transparent; }
+.workspace-tabs .tab { -fx-background-color: transparent; -fx-padding: 8 16; }
+.workspace-tabs .tab:selected { -fx-background-color: #eaf4f1; -fx-background-radius: 10 10 0 0; }
+.workspace-tabs .tab:selected .tab-label { -fx-text-fill: #176b6a; -fx-font-weight: 800; }
+.table-view { -fx-background-color: transparent; -fx-border-color: #e0e9e7; -fx-border-radius: 12; -fx-background-radius: 12; }
+.table-view .column-header-background { -fx-background-color: #edf5f3; -fx-background-radius: 12 12 0 0; }
+.table-view .column-header, .table-view .filler { -fx-background-color: transparent; -fx-size: 40; }
+.table-view .column-header .label { -fx-text-fill: #3f6065; -fx-font-weight: 800; }
+.table-row-cell { -fx-background-color: white; -fx-border-color: transparent transparent #edf2f1 transparent; -fx-cell-size: 42; }
+.table-row-cell:hover { -fx-background-color: #f4faf8; }
+.table-row-cell:selected { -fx-background-color: #dcefeb; -fx-text-background-color: #163e43; }
+.notification-list { -fx-background-color: transparent; -fx-border-color: #e0e9e7; -fx-border-radius: 12; }
+.notification-list .list-cell { -fx-background-color: white; -fx-padding: 14; -fx-border-color: transparent transparent #edf2f1 transparent; }
+.notification-list .list-cell:hover { -fx-background-color: #f4faf8; }
+.progress-bar { -fx-accent: #278b74; }
+.progress-bar .track { -fx-background-color: #e7efed; -fx-background-radius: 999; }
+.progress-bar .bar { -fx-background-radius: 999; }
+.transparent-scroll, .transparent-scroll > .viewport { -fx-background-color: transparent; }
+.chart-plot-background { -fx-background-color: transparent; }
+.chart-vertical-grid-lines, .chart-horizontal-grid-lines { -fx-stroke: #edf2f1; }
+.default-color0.chart-bar, .default-color0.chart-series-line { -fx-bar-fill: #247a79; -fx-stroke: #247a79; }
+.default-color0.chart-line-symbol { -fx-background-color: #247a79, white; }
+.separator .line { -fx-border-color: #dfe8e6; }
+
+.empty-state {
+    -fx-text-fill: #74898c;
+    -fx-font-style: italic;
+    -fx-padding: 24;
+}
+.chip {
+    -fx-background-color: #e8efee;
+    -fx-background-radius: 999;
+    -fx-padding: 4 9;
+    -fx-font-size: 10px;
+    -fx-font-weight: 800;
+    -fx-text-fill: #466267;
+}
+.chip-none {
+    -fx-background-color: #e8efee;
+    -fx-text-fill: #6f8387;
+}
+.chip-approved, .chip-active, .chip-available, .chip-accepted,
+.chip-fulfilled, .chip-verified, .chip-gold, .chip-platinum {
+    -fx-background-color: #def2e8;
+    -fx-text-fill: #176747;
+}
+.chip-pending, .chip-notified, .chip-busy, .chip-medical-hold,
+.chip-urgent, .chip-silver, .chip-cooling-down, .chip-partially-fulfilled {
+    -fx-background-color: #fff0d7;
+    -fx-text-fill: #946016;
+}
+.chip-critical, .chip-declined, .chip-cancelled, .chip-suspended,
+.chip-expired, .chip-out-of-town, .chip-not-eligible {
+    -fx-background-color: #f8dde0;
+    -fx-text-fill: #963340;
+}
+.chip-matched, .chip-ready, .chip-donor, .chip-requester {
+    -fx-background-color: #dcefed;
+    -fx-text-fill: #176b6a;
+}
+.chip-escalated, .chip-admin, .chip-bronze {
+    -fx-background-color: #ebe3f5;
+    -fx-text-fill: #6e4a8d;
+}
+.chip-normal {
+    -fx-background-color: #e8efee;
+    -fx-text-fill: #466267;
+}
+
+/* ----------------------------------------------------------------------------
+   Profile photo avatar. New this round -- everything above is unchanged from
+   your original file.
+
+   JavaFX note: ImageView isn't a Region, so CSS background-radius/clipping
+   doesn't apply to it directly. The circular photo crop happens in Java via
+   a Circle clip (see DonorDashboardController/RequesterDashboardController's
+   applyProfilePhoto()); .avatar-photo here only adds the drop-shadow ring.
+   .avatar-initials styles the fallback badge shown when no photo is set.
+   ---------------------------------------------------------------------------- */
+.avatar-photo {
+    -fx-effect: dropshadow(gaussian, rgba(20,62,68,0.18), 8, 0.15, 0, 2);
+}
+.avatar-initials {
+    -fx-background-color: #176b6a;
+    -fx-background-radius: 999;
+    -fx-text-fill: white;
+    -fx-font-weight: 800;
+    -fx-font-size: 28px;
+    -fx-alignment: center;
+    -fx-min-width: 84;
+    -fx-min-height: 84;
+    -fx-max-width: 84;
+    -fx-max-height: 84;
+}
+
+/* ----------------------------------------------------------------------------
+   Brand mark. New this round -- a real vector shape (JavaFX SVGPath, native,
+   zero new dependencies), replacing the previous Unicode emoji topbar mark.
+   Self-authored geometric teardrop (a bezier peak into a semicircular arc
+   base), not reproduced from any icon library. Sizing follows the icon
+   itself (roughly 28x28 units) rather than a font-size property, since
+   SVGPath has no font -- .topbar-mark below still exists for any other
+   emoji-based text that stays as-is elsewhere.
+   ---------------------------------------------------------------------------- */
+.brand-icon {
+    -fx-fill: #a63b45;
+}
+
